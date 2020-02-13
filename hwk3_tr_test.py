@@ -19,5 +19,5 @@ class TestMyModule(unittest.TestCase):
         cleaned_text = "I'm happy you had a beautiful day"
 
         result = hwk3_tr.tokenize_text(cleaned_text)
-        expected_result = ["happy", "beautiful", "day"]
+        expected_result = ["I'm", "happy", "beautiful", "day"]
         self.assertEqual(result, expected_result)
