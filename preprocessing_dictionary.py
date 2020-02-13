@@ -1,7 +1,7 @@
 
 glove_file = 'glove.twitter.27B.25d.txt'
-glove = open("~/Downloads/glove/glove_file")
-index_dict = open("index_dict.txt")
+glove = open(f"../../../../../Downloads/glove/{glove_file}")
+index_dict = open("index_dict.txt", "w")
 for line in glove:
     values = line.split()
     word = values[0]
