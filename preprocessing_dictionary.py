@@ -1,5 +1,7 @@
-
-import re
+"""
+Pre-processing glove file,
+translate into indexed dictionary.
+"""
 
 
 glove_file = 'glove.twitter.27B.25d.txt'
@@ -10,7 +12,6 @@ for line in glove:
     word = values[0]
     # vector = np.asarray(values[1:], dtype='float32')
     # emb_dict[word] = vector
-    if word:
-        index_dict.write(f"{word}\n")
+    index_dict.write(f"{word}\n")
 glove.close()
 index_dict.close()
