@@ -1,3 +1,5 @@
+"""Assignment 3"""
+
 import re
 import stopwords
 from nltk_tokenize import TweetTokenizer
@@ -21,19 +23,21 @@ def isnum(token: str) -> bool:
     except ValueError:
         return False
 
+index_dict = {}
+with open("index_dict.txt") as file:
+    
+
 def replace_token_with_index(tokenized_text, max_length_dictionary: int = 500) -> list:
     """Index tokens"""
     index_of_tweet = []
     inconvertible_token = []
-    with open("index_dict.txt") as file:
-        index_dict = {}
-        for token in tokenized_text:
-            if isnum(token):
-                index_of_tweet.append(index_dict["<number>"])
-            elif token.lower() in index_dict:
-                index_of_tweet.append(index_dict[token.lower()])
-            else:
-                inconvertible_token.append(token) # for test
+    for token in tokenized_text:
+        if isnum(token):
+            index_of_tweet.append(index_dict["<number>"])
+        elif token.lower() in index_dict:
+            index_of_tweet.append(index_dict[token.lower()])
+        else:
+            inconvertible_token.append(token) # for test
     return index_of_tweet
 
 def pad_sequence(index_list, max_length_tweet=20) -> list:
