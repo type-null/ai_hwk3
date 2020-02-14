@@ -12,12 +12,12 @@ class TestMyModule(unittest.TestCase):
         I'm happy you had a beautiful day! 😘 https://t.co/T6uxfX6DpC"
         
         result = hwk3_tr.clean_text(tweet)
-        expected_result = "I'm happy you had a beautiful day"
+        expected_result = "❤❤ I'm happy you had a beautiful day! 😘"
         self.assertEqual(result, expected_result)
 
     def test_tokenize_text(self):
-        cleaned_text = "I'm happy you had a beautiful day"
+        cleaned_text = "I'm happy you had a beautiful day!"
 
         result = hwk3_tr.tokenize_text(cleaned_text)
-        expected_result = ["I'm", "happy", "beautiful", "day"]
+        expected_result = ["I'm", "happy", "beautiful", "day", "!"]
         self.assertEqual(result, expected_result)
