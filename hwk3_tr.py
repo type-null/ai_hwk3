@@ -23,9 +23,11 @@ def isnum(token: str) -> bool:
     except ValueError:
         return False
 
-index_dict = {}
+INDEX_DICT = {}
+LINE_COUNT = 0
 with open("index_dict.txt") as file:
-    
+    for line in file:
+        INDEX_DICT[line] = LINE_COUNT
 
 def replace_token_with_index(tokenized_text, max_length_dictionary: int = 500) -> list:
     """Index tokens"""
@@ -33,9 +35,9 @@ def replace_token_with_index(tokenized_text, max_length_dictionary: int = 500) -
     inconvertible_token = []
     for token in tokenized_text:
         if isnum(token):
-            index_of_tweet.append(index_dict["<number>"])
-        elif token.lower() in index_dict:
-            index_of_tweet.append(index_dict[token.lower()])
+            index_of_tweet.append(INDEX_DICT["<number>"])
+        elif token.lower() in INDEX_DICT:
+            index_of_tweet.append(INDEX_DICT[token.lower()])
         else:
             inconvertible_token.append(token) # for test
     return index_of_tweet
