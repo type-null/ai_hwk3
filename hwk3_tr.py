@@ -17,7 +17,8 @@ def tokenize_text(cleaned_text) -> list:
 def replace_token_with_index(tokenized_text, max_length_dictionary=500) -> list:
     index_of_tweet = []
     with open("index_dict.txt") as index_dict:
-        for _ in tokenized_text:
+        for token in tokenized_text:
+            token.lower()
             index_of_tweet.append(1)
     return index_of_tweet
 
@@ -25,12 +26,12 @@ def pad_sequence(index_list, max_length_tweet=20) -> list:
     if len(index_list) > max_length_tweet:
         padded_seq = index_list[:max_length_tweet]
     else:
-        zeros = [0] * max_length_tweet-len(index_list) 
-        padded_seq = index_list.extend(zeros)
+        zeros = [0] * (max_length_tweet-len(index_list))
+        padded_seq = index_list + zeros
     return padded_seq
 
-def oneForAll(tweet) -> list:
+def one_for_all(tweet, max_length_dictionary=500, max_length_tweet=20) -> list:
     """Do all conversion at once"""
-    return pad_sequence(replace_token_with_index(
-        tokenize_text(clean_text(tweet))))
+    return pad_sequence(replace_token_with_index(tokenize_text(
+        clean_text(tweet)), max_length_dictionary), max_length_tweet)
 
