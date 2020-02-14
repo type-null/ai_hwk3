@@ -26,7 +26,13 @@ class TestMyModule(unittest.TestCase):
         return
 
     def test_pad_sequence(self):
-        return
+        index_list = [0, 0, 0, 0]
+
+        result = hwk3_tr.pad_sequence(index_list, 25)
+        expected_result = [0] * 25
+        self.assertEqual(result, expected_result)
 
     def test_one_for_all(self):
+        # tweet = ""
+        # result = hwk3_tr.one_for_all(tweet)
         return
