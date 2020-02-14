@@ -21,3 +21,12 @@ class TestMyModule(unittest.TestCase):
         result = hwk3_tr.tokenize_text(cleaned_text)
         expected_result = ["I'm", "happy", "beautiful", "day", "!"]
         self.assertEqual(result, expected_result)
+
+    def test_replace_token_with_index(self):
+        return
+
+    def test_pad_sequence(self):
+        return
+
+    def test_one_for_all(self):
+        return

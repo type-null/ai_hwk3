@@ -4,7 +4,7 @@ import stopwords
 from nltk_tokenize import TweetTokenizer
 
 def clean_text(tweet) -> str:
-    """Remove RT, url, number and punctuation"""
+    """Remove RT, handler and url"""
     tweet = re.sub(re.compile(r'([RT])|(@[\w]+:?)|(\w+:\/\/\S+)'), ' ', tweet)
     return ' '.join(tweet.split()).strip()
 
@@ -23,10 +23,10 @@ def replace_token_with_index(tokenized_text, max_length_dictionary=500) -> list:
 
 def pad_sequence(index_list, max_length_tweet=20) -> list:
     if len(index_list) > max_length_tweet:
-        padded_seq = index_list[:20]
+        padded_seq = index_list[:max_length_tweet]
     else:
-        padded_seq = index_list + 2
-
+        zeros = [0] * max_length_tweet-len(index_list) 
+        padded_seq = index_list.extend(zeros)
     return padded_seq
 
 def oneForAll(tweet) -> list:
