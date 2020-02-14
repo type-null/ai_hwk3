@@ -1,4 +1,5 @@
 # hwk3_tr
+Pre-Processing Library: a Python library to perform preprocessing for a sentiment analysis task with a CNN + Embedding model.
 
 ## methods:
 1. clean_text
